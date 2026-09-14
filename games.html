@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Engine - Catalog Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep: #06080c;
+            --bg-color: #0b0e14;
+            --card-bg: #131820;
+            --accent-neon: #00ffcc;
+            --text-color: #f0f6fc;
+            --text-muted: #8b949e;
+            --border-color: #21262d;
+            --font-main: 'Poppins', sans-serif;
+            --font-gaming: 'Rajdhani', sans-serif;
+            --transition: all 0.3s ease;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-main); }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 6%; background-color: rgba(6, 8, 12, 0.95);
+            position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color);
+        }
+        .logo { font-family: var(--font-gaming); font-size: 30px; font-weight: 700; letter-spacing: 2px; }
+        .logo span { color: var(--accent-neon); }
+        .nav-links { display: flex; gap: 35px; }
+        .nav-links a { font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-neon); }
+
+        /* Main Catalog Layout Structure */
+        .catalog-container { display: grid; grid-template-columns: 280px 1fr; gap: 40px; padding: 120px 6% 80px 6%; }
+        
+        /* Sidebar Filter Engine */
+        .filter-sidebar { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; height: fit-content; }
+        .filter-sidebar h3 { font-family: var(--font-gaming); font-size: 20px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .filter-group { margin-bottom: 25px; }
+        .filter-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--text-muted); }
+        .filter-input { width: 100%; background: var(--bg-deep); border: 1px solid var(--border-color); padding: 10px 14px; border-radius: 6px; color: var(--text-color); font-size: 14px; }
+        .filter-input:focus { border-color: var(--accent-neon); outline: none; }
+
+        .checkbox-list li { margin-bottom: 8px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-muted); cursor: pointer; }
+        .checkbox-list input[type="checkbox"] { accent-color: var(--accent-neon); width: 16px; height: 16px; cursor: pointer; }
+
+        /* Content Catalog View Grid */
+        .catalog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .catalog-title h1 { font-family: var(--font-gaming); font-size: 36px; }
+        .catalog-title h1 span { color: var(--accent-neon); }
+        .catalog-title p { color: var(--text-muted); font-size: 14px; }
+
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
+        .game-card { background-color: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: var(--transition); }
+        .game-card:hover { transform: translateY(-6px); border-color: var(--accent-neon); box-shadow: 0 10px 25px rgba(0,255,204,0.1); }
+        .game-thumb { height: 160px; width: 100%; object-fit: cover; }
+        .game-info { padding: 18px; }
+        .game-genre { font-size: 11px; font-weight: 600; color: var(--accent-neon); text-transform: uppercase; margin-bottom: 6px; }
+        .game-name { font-size: 18px; font-family: var(--font-gaming); font-weight: 700; margin-bottom: 12px; }
+        .game-meta { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 10px; }
+
+        footer { background-color: var(--bg-deep); padding: 40px 6%; text-align: center; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 14px; margin-top: 60px; }
+
+        @media (max-width: 900px) {
+            .catalog-container { grid-template-columns: 1fr; }
+            .filter-sidebar { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">NEXUS<span>ENGINE</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="games.html" class="active">Catalog</a></li>
+            <li><a href="community.html">Tournaments</a></li>
+        </ul>
+    </header>
+
+    <div class="catalog-container">
+        <!-- Sidebar Options -->
+        <aside class="filter-sidebar">
+            <h3>Filter Registry</h3>
+            <div class="filter-group">
+                <label>Search Title</label>
+                <input type="text" class="filter-input" placeholder="Type game name...">
+            </div>
+            <div class="filter-group">
+                <label>Platform Filter</label>
+                <ul class="checkbox-list">
+                    <li><input type="checkbox" checked> Windows PC</li>
+                    <li><input type="checkbox"> PlayStation 5</li>
+                    <li><input type="checkbox"> Xbox Series X</li>
+                    <li><input type="checkbox"> Cloud Native</li>
+                </ul>
+            </div>
+            <div class="filter-group">
+                <label>Genre Options</label>
+                <ul class="checkbox-list">
+                    <li><input type="checkbox"> Action / RPG</li>
+                    <li><input type="checkbox"> First-Person Shooter</li>
+                    <li><input type="checkbox"> Arcade Racing</li>
+                    <li><input type="checkbox"> Open World Sandbox</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Display Grid -->
+        <main>
+            <div class="catalog-header">
+                <div class="catalog-title">
+                    <h1>Complete <span>Library Repository</span></h1>
+                    <p>Showing 1,240 accessible digital software titles ready to run.</p>
+                </div>
+            </div>
+
+            <div class="catalog-grid">
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=500&auto=format&fit=crop" class="game-thumb">
+                    <div class="game-info">
+                        <div class="game-genre">Cyberpunk / RPG</div>
+                        <h4 class="game-name">Cyber Realm 2088</h4>
+                        <div class="game-meta"><span><i class="fa-solid fa-star" style="color:#f1e05a;"></i> 4.9</span><span>PC / PS5</span></div>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=500&auto=format&fit=crop" class="game-thumb">
+                    <div class="game-info">
+                        <div class="game-genre">Tactical FPS</div>
+                        <h4 class="game-name">Apex Strike: Global</h4>
+                        <div class="game-meta"><span><i class="fa-solid fa-star" style="color:#f1e05a;"></i> 4.8</span><span>PC / Steam</span></div>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=500&auto=format&fit=crop" class="game-thumb">
+                    <div class="game-info">
+                        <div class="game-genre">Arcade Racing</div>
+                        <h4 class="game-name">Neon Velocity VR</h4>
+                        <div class="game-meta"><span><i class="fa-solid fa-star" style="color:#f1e05a;"></i> 4.7</span><span>PC / VR</span></div>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=500&auto=format&fit=crop" class="game-thumb">
+                    <div class="game-info">
+                        <div class="game-genre">Strategy RTS</div>
+                        <h4 class="game-name">Command & Conquer X</h4>
+                        <div class="game-meta"><span><i class="fa-solid fa-star" style="color:#f1e05a;"></i> 4.5</span><span>PC Only</span></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Nexus Engine Technologies Inc. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

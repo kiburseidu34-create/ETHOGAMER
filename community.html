@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Engine - Tournaments & Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep: #06080c;
+            --bg-color: #0b0e14;
+            --card-bg: #131820;
+            --accent-neon: #00ffcc;
+            --text-color: #f0f6fc;
+            --text-muted: #8b949e;
+            --border-color: #21262d;
+            --font-main: 'Poppins', sans-serif;
+            --font-gaming: 'Rajdhani', sans-serif;
+            --transition: all 0.3s ease;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-main); }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 6%; background-color: rgba(6, 8, 12, 0.95);
+            position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color);
+        }
+        .logo { font-family: var(--font-gaming); font-size: 30px; font-weight: 700; letter-spacing: 2px; }
+        .logo span { color: var(--accent-neon); }
+        .nav-links { display: flex; gap: 35px; }
+        .nav-links a { font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-neon); }
+
+        .community-container { padding: 120px 6% 80px 6%; max-width: 1200px; margin: 0 auto; }
+        .page-header-title { font-family: var(--font-gaming); font-size: 42px; margin-bottom: 10px; }
+        .page-header-title span { color: var(--accent-neon); }
+        .page-subtitle { color: var(--text-muted); margin-bottom: 40px; font-size: 15px; }
+
+        .tournament-stack { display: flex; flex-direction: column; gap: 20px; }
+        .t-card {
+            background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px;
+            padding: 25px 30px; display: flex; justify-content: space-between; align-items: center;
+            transition: var(--transition);
+        }
+        .t-card:hover { border-color: var(--accent-neon); transform: translateY(-3px); }
+        .t-details h3 { font-family: var(--font-gaming); font-size: 24px; margin-bottom: 6px; }
+        .t-details p { color: var(--text-muted); font-size: 14px; display: flex; gap: 20px; }
+        .t-details p span { color: var(--text-color); font-weight: 600; }
+        
+        .btn-register {
+            background: transparent; border: 2px solid var(--accent-neon); color: var(--accent-neon);
+            padding: 10px 24px; border-radius: 6px; font-weight: 700; font-family: var(--font-gaming);
+            font-size: 16px; cursor: pointer; transition: var(--transition);
+        }
+        .btn-register:hover { background: var(--accent-neon); color: var(--bg-deep); box-shadow: 0 0 15px rgba(0,255,204,0.4); }
+
+        footer { background-color: var(--bg-deep); padding: 40px 6%; text-align: center; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 14px; margin-top: 80px; }
+
+        @media (max-width: 768px) {
+            .t-card { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .t-details p { flex-direction: column; gap: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">NEXUS<span>ENGINE</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Catalog</a></li>
+            <li><a href="community.html" class="active">Tournaments</a></li>
+        </ul>
+    </header>
+
+    <div class="community-container">
+        <h1 class="page-header-title">Esports Global <span>Championships</span></h1>
+        <p class="page-subtitle">Register your professional team roster or enter individual brackets to win seasonal prizes.</p>
+
+        <div class="tournament-stack">
+            <div class="t-card">
+                <div class="t-details">
+                    <h3>Apex Legends Global Series Major</h3>
+                    <p><span>Prize Pool:</span> $75,000 USD &nbsp;&nbsp;|&nbsp;&nbsp; <span>Date:</span> March 28, 2026 &nbsp;&nbsp;|&nbsp;&nbsp; <span>Status:</span> Registration Open</p>
+                </div>
+                <button class="btn-register">Register Squad</button>
+            </div>
+
+            <div class="t-card">
+                <div class="t-details">
+                    <h3>Cyber Realm 2088 PvP Showdown</h3>
+                    <p><span>Prize Pool:</span> $30,000 USD &nbsp;&nbsp;|&nbsp;&nbsp; <span>Date:</span> April 5, 2026 &nbsp;&nbsp;|&nbsp;&nbsp; <span>Status:</span> Slots Available</p>
+                </div>
+                <button class="btn-register">Register Squad</button>
+            </div>
+
+            <div class="t-card">
+                <div class="t-details">
+                    <h3>Neon Velocity Pro Time-Trial Cup</h3>
+                    <p><span>Prize Pool:</span> $15,000 USD &nbsp;&nbsp;|&nbsp;&nbsp; <span>Date:</span> April 19, 2026 &nbsp;&nbsp;|&nbsp;&nbsp; <span>Status:</span> Upcoming</p>
+                </div>
+                <button class="btn-register">Register Squad</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Nexus Engine Technologies Inc. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
